@@ -1,0 +1,108 @@
+:root {
+  --midnight-blue: #0F1B33;
+  --deep-indigo-shadow: #1A2752;
+  --ultramarine-sky: #1A2AFF;
+  --lapis-sands: #3A87C9;
+  --dune-cyan: #77BFCF;
+  --plasma-blue: #00F0FF;
+  --pale-glow: #9AFCD9;
+  --alien-greenfire: #00FF5F;
+  --solar-amber: #FFBF00;
+  --desert-ochre: #D4A017;
+  --ulfire: #FF6F00;
+  --red-giant: #FF2E2E;
+  --luminous-pink: #FF6FE1;
+  --hyper-magenta: #FF00AA;
+  --jale: #9C27FF;
+  --synthwave-purple: #7D00FF;
+  --ancient-bronze: #CD7F32;
+  --rusted-iron: #A63D2F;
+  --duststorm-tan: #C69C6D;
+  --bone-white: #E5DFD2;
+  --chrome-silver: #BFC9D6;
+  --salt-flat-white: #FAFAFA;
+  --iron-shadow: #333333;
+  --obsidian-grey: #1A1A1A;
+  --vault-black: #000000;
+}
+
+@font-face {
+  font-family: 'Lucida Console';
+  src: url('lucon.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+    background-color: var(--midnight-blue);
+}
+
+a:link {
+    color: var(--dune-cyan);
+}
+
+a:visited {
+    color: var(--jale);
+}
+
+Charsheet {
+    flex-wrap: wrap;
+}
+
+body, input, select, textarea, button {
+    color:var(--chrome-silver);
+    font-family: 'Lucida Console', sans-serif;
+}
+
+header {
+    background-color: var(--deep-indigo-shadow);
+    padding: 20px;]
+}
+
+h1{
+    color: var(--red-giant);
+}
+
+h2,h3 {
+    color: var(--plasma-blue);
+}
+
+table, th, td {
+    border: 1px solid;
+    border-collapse: collapse;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    vertical-align: top ;
+}
+
+th {
+    background-color: var(--ultramarine-sky);
+    border-color: var(--chrome-silver);
+}
+
+input, select, textarea {
+    background-color: var(--obsidian-grey);
+    border-color: var(--ancient-bronze);
+    outline-color: var(--jale);
+    border-width: 1px;
+    border-radius: 8px;
+}
+
+textarea {
+    width: 95%;
+    display: block;
+}
+
+button {
+    background-color: var(--ultramarine-sky);
+    border-color: var(--ancient-bronze);
+}
+
+.InputStat {
+    text-align: center;
+    width: 50px;
+}
+
+.XPSum {
+    color: var(--ancient-bronze);
+}

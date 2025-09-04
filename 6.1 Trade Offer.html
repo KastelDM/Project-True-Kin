@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trade Offer - Vaults of Vaarn</title>
+  <link rel="stylesheet" href="Stylesheet.css">
+</head>
+<body>
+  <h1>Trade Offer</h1>
+  <p>Use this form to make a trade offer.</p>
+
+  <h2>1. Where are you doing business?</h2>
+  <p>
+    Choose from a known market that you can safely access:
+    <select name="ChooseMarket" id="ChooseMarket" required>
+      <option value="A-olis Oasis">A-olis Oasis</option>
+      <option value="Fort Aegis">Fort Aegis</option>
+      <option value="Gnomon (EveningShade)">Gnomon (EveningShade)</option>
+      <option value="Gnomon (Morningshade)">Gnomon (Morningshade)</option>
+    </select>
+  </p>
+
+  <h2>2. What are you looking for?</h2>
+  <p>If you're just looking to sell some goods, name your preferred means of payment.</p>
+  <textarea name="LookingFor" id="LookingFor" rows="6" required></textarea>
+
+  <h2>3. What do you offer in exchange?</h2>
+  <p>If you want the market to name its price, say so.</p>
+  <textarea name="Offering" id="Offering" rows="6" required></textarea>
+
+  <h2>4. Generate your offer.</h2>
+  <p>
+    <button id="GenerateMarkdown">Generate Discord Message</button>
+  </p>
+
+  <h3>Copy this into Discord:</h3>
+  <textarea id="Output" rows="10" style="width:100%;" readonly></textarea>
+
+  <script>
+    document.getElementById('GenerateMarkdown').addEventListener('click', function () {
+      const market = document.getElementById('ChooseMarket').value || '(unknown)';
+      const lookingfor = document.getElementById('LookingFor').value.trim() || '(not specified)';
+      const offering = document.getElementById('Offering').value.trim() || '(not specified)';
+
+      // Build markdown block
+      const markdown = 
+`**Trade Offer**  
+**Market:** ${market}  
+
+**Looking for:**  
+${lookingfor}  
+
+**Offering:**  
+${offering}`;
+
+      document.getElementById('Output').value = markdown;
+    });
+  </script>
+  <footer><p><a href="index.html">Back to Index</a></p></footer>
+</body>
+</html>

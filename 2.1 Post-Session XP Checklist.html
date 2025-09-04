@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XP Checklist - Vaults of Vaarn</title>
+  <link rel="stylesheet" href="Stylesheet.css">
+  <script>
+    function updateTotal() {
+      // Select all checkboxes with name="XP"
+      const checkboxes = document.querySelectorAll('input[name="XP"]');
+      let total = 0;
+      checkboxes.forEach(cb => {
+        if (cb.checked) total++;
+      });
+      // Display the total
+      document.getElementById("Total").textContent = total;
+    }
+
+    // Set up event listeners when page loads
+    window.onload = function() {
+      const checkboxes = document.querySelectorAll('input[name="XP"]');
+      checkboxes.forEach(cb => cb.addEventListener('change', updateTotal));
+      updateTotal(); // initialize count
+    };
+  </script>
+</head>
+<body>
+  <h1>Post-session XP Checklist</h1>
+  <p>At the end of a game session, reflect on your experiences and check the criteria boxes based on them. You receive 1 XP per checked box. A single event can only count towards a single checkbox.</p>
+
+  <h3>Discovery</h3>
+  <p><input type="checkbox" name="XP"> Reached a new place (settlement, landmark, vault or point of interest).</p>
+  <p><input type="checkbox" name="XP"> Unearthed a secret or hidden truth.</p>
+  <p><input type="checkbox" name="XP"> Gained rare knowledge or exotica.</p>
+
+  <h3>Intrigue</h3>
+  <p><input type="checkbox" name="XP"> Made an impression or impact on an important faction, community, individual or political system.</p>
+  <p><input type="checkbox" name="XP"> Made a significant friend or foe.</p>
+  <p><input type="checkbox" name="XP"> Completed a major quest or journey.</p>
+
+  <h3>Peril</h3>
+  <p><input type="checkbox" name="XP"> Resolved or navigated a meaningful conflict (peacefully or otherwise).</p>
+  <p><input type="checkbox" name="XP"> Tasted a meaningful defeat or victory.</p>
+  <p><input type="checkbox" name="XP"> Suffered a critical wound.</p>
+
+  <h3>Character</h3>
+  <p><input type="checkbox" name="XP"> Growth or transformation.</p>
+  <p><input type="checkbox" name="XP"> Roleplayed a character trait to a fault.</p>
+  <p><input type="checkbox" name="XP"> Acquired a new character feature, such as a Talent or Cybernetic Implant.</p>
+
+  <h3>Bonus XP</h3>
+  <p><input type="checkbox" name="XP"><input type="checkbox" name="XP"><input type="checkbox" name="XP"> The GM may choose to bestow you 1-3 bonus XP based on improvised criteria, such as accompishing an impressive feat.</p>
+
+  <h3>Total XP: <span id="Total" class="XPSum"></span></h3>
+
+  <footer><p><a href="index.html">Back to Index</a></p></footer>
+</body>
+</html>
