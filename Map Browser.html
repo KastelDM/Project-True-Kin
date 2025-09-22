@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Map - Vaults of Vaarn</title>
+    <link rel="stylesheet" href="Stylesheet.css">
+</head>
+<body>
+    <h1>Map of Vaarn</h1>
+    <!-- Simple SVG viewport that pans/zooms an external worldmap.svg -->
+    <svg id="viewport" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="World Map Viewport" tabindex="0" style="width: 100%; height: 80vh"></svg>
+    <script>
+            (function () {
+            // ====== CONFIG ======
+            const MAP_URL = "World Map.svg"; // <-- change to your server path
+            const MIN_SCALE = 0.1, MAX_SCALE = 20, ZOOM_STEP = 1.08;
+
+            // ====== DOM & Sizing ======
+            const svg = document.getElementById("viewport");
+            function fitToWindow() {
+                svg.setAttribute("width", window.innerWidth);
+                svg.setAttribute("height", window.innerHeight);
+            }
+            window.addEventListener("resize", fitToWindow);
+            fitToWindow();
+
+            // ====== Scene Graph ======
+            const camera = document.createElementNS("http://www.w3.org/2000/svg", "g");
+            camera.setAttribute("id", "camera");
+            svg.appendChild(camera);
+
+            const img = document.createElementNS("http://www.w3.org/2000/svg", "image");
+            img.setAttribute("href", MAP_URL);
+            img.setAttribute("x", "0");
+            img.setAttribute("y", "0");
+            camera.appendChild(img);
+
+            // ====== State ======
+            let mapW = 1000, mapH = 1000;     // fallback until we detect real size
+            let scale = 1, tx = 0, ty = 0;     // camera transform
+            let panning = false, lastX = 0, lastY = 0, activePointerId = null;
+
+            function applyTransform() {
+                camera.setAttribute("transform", `translate(${tx},${ty}) scale(${scale})`);
+            }
+
+            // ====== Load SVG intrinsic size (fetch & parse viewBox/width/height) ======
+            fetch(MAP_URL, { cache: "force-cache" }).then(r => r.text()).then(txt => {
+                // Try viewBox first
+                const vbMatch = txt.match(/viewBox\s*=\s*["']\s*([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)\s*["']/i);
+                if (vbMatch) {
+                mapW = parseFloat(vbMatch[3]);
+                mapH = parseFloat(vbMatch[4]);
+                } else {
+                // Try width/height attributes as fallback
+                const wMatch = txt.match(/width\s*=\s*["']\s*([\d.]+)\s*(px)?\s*["']/i);
+                const hMatch = txt.match(/height\s*=\s*["']\s*([\d.]+)\s*(px)?\s*["']/i);
+                if (wMatch && hMatch) {
+                    mapW = parseFloat(wMatch[1]);
+                    mapH = parseFloat(hMatch[1]);
+                }
+                }
+            }).finally(() => {
+                // Set the <image> size so transforms are in map units
+                img.setAttribute("width", String(mapW));
+                img.setAttribute("height", String(mapH));
+                resetView(); // initial fit
+            });
+
+            // ====== Coordinate Helpers ======
+            function clientToSvgPoint(clientX, clientY) {
+                const pt = svg.createSVGPoint();
+                pt.x = clientX; pt.y = clientY;
+                const ctm = svg.getScreenCTM();
+                return ctm ? pt.matrixTransform(ctm.inverse()) : pt;
+            }
+            function svgToMapCoords(svgX, svgY) {
+                // Inverse of camera transform: (x - tx)/scale
+                return { x: (svgX - tx) / scale, y: (svgY - ty) / scale };
+            }
+
+            // ====== View Controls ======
+            function resetView() {
+                // Fit map to viewport (letterbox)
+                const vw = svg.clientWidth || window.innerWidth;
+                const vh = svg.clientHeight || window.innerHeight;
+                const sx = vw / mapW, sy = vh / mapH;
+                scale = Math.min(sx, sy);
+                const cx = (vw - mapW * scale) / 2;
+                const cy = (vh - mapH * scale) / 2;
+                tx = cx; ty = cy;
+                applyTransform();
+            }
+
+            function zoomAt(clientX, clientY, factor) {
+                const svgPt = clientToSvgPoint(clientX, clientY);
+                const mapPt = svgToMapCoords(svgPt.x, svgPt.y);
+                const newScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, scale * factor));
+                if (newScale === scale) return;
+
+                // Keep the zoom focus point anchored under the cursor
+                tx = svgPt.x - mapPt.x * newScale;
+                ty = svgPt.y - mapPt.y * newScale;
+                scale = newScale;
+                applyTransform();
+            }
+
+            // ====== Mouse & Touch ======
+            svg.addEventListener("wheel", (e) => {
+                e.preventDefault();
+                const factor = e.deltaY > 0 ? 1 / ZOOM_STEP : ZOOM_STEP;
+                zoomAt(e.clientX, e.clientY, factor);
+            }, { passive: false });
+
+            svg.addEventListener("dblclick", (e) => {
+                e.preventDefault();
+                resetView();
+            });
+
+            svg.addEventListener("pointerdown", (e) => {
+                if (panning) return;
+                panning = true;
+                activePointerId = e.pointerId;
+                lastX = e.clientX; lastY = e.clientY;
+                svg.setPointerCapture(activePointerId);
+            });
+
+            svg.addEventListener("pointermove", (e) => {
+                if (!panning || e.pointerId !== activePointerId) return;
+                const dx = e.clientX - lastX;
+                const dy = e.clientY - lastY;
+                lastX = e.clientX; lastY = e.clientY;
+                tx += dx; ty += dy;
+                applyTransform();
+            });
+
+            function endPan(e) {
+                if (e.pointerId !== activePointerId) return;
+                panning = false;
+                try { svg.releasePointerCapture(activePointerId); } catch {}
+                activePointerId = null;
+            }
+            svg.addEventListener("pointerup", endPan);
+            svg.addEventListener("pointercancel", endPan);
+            svg.addEventListener("pointerleave", (e) => { if (panning) endPan(e); });
+
+            // ====== Keyboard Shortcuts ======
+            svg.addEventListener("keydown", (e) => {
+                if (e.key === "+" || e.key === "=") {
+                e.preventDefault();
+                zoomAt(window.innerWidth / 2, window.innerHeight / 2, ZOOM_STEP);
+                } else if (e.key === "-" || e.key === "_") {
+                e.preventDefault();
+                zoomAt(window.innerWidth / 2, window.innerHeight / 2, 1 / ZOOM_STEP);
+                } else if (e.key.toLowerCase() === "r") {
+                e.preventDefault();
+                resetView();
+                } else if (e.key === "ArrowLeft") { tx += 30; applyTransform(); }
+                else if (e.key === "ArrowRight") { tx -= 30; applyTransform(); }
+                else if (e.key === "ArrowUp") { ty += 30; applyTransform(); }
+                else if (e.key === "ArrowDown") { ty -= 30; applyTransform(); }
+            });
+            })();
+    </script>
+    <footer><p><a href="index.html">Back to Index</a></p></footer>
+</body>
+</html>
