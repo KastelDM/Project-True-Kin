@@ -13,32 +13,21 @@
       <p>Each weapon lists its slots, hands required, damage, and any special traits.</p>
       <p></p>
       <h2>General Weapon Traits</h2>
-      <p>All weapons share these core properties:</p>
+      <p>Weapons may have the following traits:</p>
       <ul>
-        <li><b># Slots:</b> How many inventory slots the weapon occupies.</li>
-        <li><b>Hands (#H):</b> How many free hands are required to attack with the weapon. <em>1H weapons leave a free hand for another weapon, shield, tool, or device.</em></li>
+        <li><b>Slots:</b> How many burden slots the weapon occupies.</li>
+        <li><b>2H:</b> Weapons with the 2H tag require 2 hands to use.</li>
+        <li><b>Speed:</b> the value added to initiative checks while wielding the weapon.</li>
+        <li><b>Range:</b> the weapon's optimal range. Attacks made with a weapon outside of it's optimal range incur disadvantage on the Attack Roll.<ul><li>Some weapons have a range of "C+". This indicates that the weapon is a close-range weapon, but in grid-based combat, it can be used to attack targets up to 2 squares away.</li><li>Throwable weapons have a "Thrown" range in addition to their normal range.</li></ul></li>
+        <li><b>Reload:</b> When the natural d20 result of the Attack Roll of an attack made with this weapon is equal to or less than this value, one stack of ammunition is consumed.</li>
         <li><b>Damage:</b> How much damage the weapon deals on a successful hit.</li>
       </ul>
       <p></p>
-      <h2>Melee Weapon Traits</h2>
-      <p>Some melee weapons have additional properties:</p>
-      <ul>
-        <li><b>Thrown (Range):</b> You may make a ranged attack by throwing the weapon. Thrown attacks made outside the range noted between the brackets are made with disadvantage.</li>
-        <li><b>Reach:</b> In grid-based combat, you may make melee attacks (including Attacks of Opportunity) against targets up to 2 squares away.</li>
-      </ul>
-      <p></p>
-      <h2>Ranged Weapon Traits</h2>
-      <p>Ranged weapons often include the following properties:</p>
-      <ul>
-        <li><b>Reload (#):</b> When you attack and your natural attack roll is less than or equal to this number, one stack of ammunition is consumed.</li>
-        <li><b>Misfire (#):</b> The same as a reload; except the attack also automatically fails, even if the attack roll was high enough to penetrate the target's armour.</li>
-      </ul>
-      <p></p>
       <h2>Tracking Ammunition</h2>
-      <p>To attack with a ranged weapon that has the Reload or Misfire traits, you must have the appropriate ammunition in your inventory. However, individual projectiles are not tracked. Instead, ranged ammunition is abstracted into stacks. You lose a stack of ammunition in the following circumstances:</p>
+      <p>To attack with a ranged weapon that has the Reload trait, you must have the appropriate ammunition in your inventory. However, individual projectiles are not tracked. Instead, ranged ammunition is abstracted into "stacks". You lose a stack of ammunition in the following circumstances:</p>
       <ul>
-        <li><b>Reload/Misfire:</b> Your attack roll triggers Reload or Misfire.</li>
-        <li><b>After Combat:</b> after an encounter in which you fired your weapon, make a PSY save. The Referee sets the difficulty based on how long and intense the encounter was. On a failure, you lose 1 stack of ammunition.</li>
+        <li><b>Reload:</b> Your attack roll triggers a Reload.</li>
+        <li><b>After Combat:</b> after an encounter in which you fired your weapon, make a PSY save. The Referee sets the difficulty based on how long and intense the encounter was. On a failure, you lose 1 stack of ammunition for each weapon used during the combat.</li>
       </ul>
       <p></p>
     </section>
