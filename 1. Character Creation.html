@@ -4,149 +4,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Character Creation - Vaults of Vaarn</title>
+    <title>Character Creation</title>
     <link rel="stylesheet" href="Stylesheet.css">
 </head>
 
 <body>
     <h1>Character Creation</h1>
-    <h2>1. Print a Character Sheet and Read the Intro</h2>
+
+    <div class="summary-box">
+        <h3>Quick Start Overview</h3>
+        <ol>
+            <li>Print a character sheet</li>
+            <li>Choose an Ancestry and name your character</li>
+            <li>Roll Abilities</li>
+            <li>Roll Background & Personality</li>
+            <li>Choose a Mystic Gift or Cybernetic Implant</li>
+            <li>Roll HP and calculate Burdens</li>
+            <li>Roll Starting Gear and Exotica</li>
+            <li>Finish details and send your character to the referee</li>
+        </ol>
+    </div>
+
+    <hr>
+
+    <h2>1. Get a Character Sheet</h2>
     <ol>
-        <li>To get started, download and print a <a href="1.1 Blank Character Sheet.pdf" target=_blank"">Blank Character
-                Sheet</a>. For your reference, here's an example of a <a href="1.2 Example Character.pdf"
-                target="_blank">filled one</a>.</li>
-        <li>Read the 1-page setting intro, <a href="https://vaarn.github.io/#/what-is-vaarn" target="_blank">"What is
-                Vaarn?"</a>, then return to these instructions.</li>
+        <li>Download and print a <a href="1.1 Blank Character Sheet.pdf" target="_blank">Blank Character Sheet</a>.</li>
+        <li>For reference, here is a <a href="1.2 Example Character.pdf" target="_blank">completed example</a>.</li>
+        <li>Read the one-page setting intro: <a href="https://vaarn.github.io/#/what-is-vaarn" target="_blank">What is
+                Vaarn?</a>, then return to these instructions.</li>
     </ol>
-    <h2>2. Roll your Abilities</h2>
+
+    <hr>
+
+    <h2>2. Choose an Ancestry & Name Your Character</h2>
     <p>
-        You have six core Abilities:
+        Your Ancestry defines what kind of being you are, what languages you speak, and any special features you begin
+        play with.
+        Choose one Ancestry from the table below, then give your character a name.
     </p>
-    <ul>
-        <li><b>Strength (STR)</b>: melee attacks, readied items, physical power, athletics.</li>
-        <li><b>Dexterity (DEX)</b>: ranged attacks, speed, poise, finesse, acrobatics.</li>
-        <li><b>Constitution (CON)</b>: health recovery, carrying capacity, resistance to elements and intoxicants.</li>
-        <li><b>Psyche (PSY)</b>: ammo conservation, perception, judgement, intuition.</li>
-        <li><b>Intellect (INT)</b>: searching, general and specialized knowledge, language and tech skills (informed by Ancestry and Background).</li>
-        <li><b>Ego (EGO)</b>: morale, willpower, persuasion, performance, charm, deception.</li>
-    </ul>
+
     <p>
-        To determine your Ability values, roll 3d6 (three six-sided dice) for each Ability, in order. The lowest result
-        of the three dice on each roll is the Ability's value.
+        Each Ancestry has a linked page with tables for names and appearance. These are optional, but recommended if you
+        want inspiration.
     </p>
-    <ul>
-        <li>Example: You roll a 2, 2, and 6 for Strength. The lowest die is a 2, so your PC's Strength has a value of 2.
-            Repeat this process for the rest of the abilities and record them on your Character Sheet.</li>
-    </ul>
-    <h2>3. Determine your Background</h2>
-    <p>Use the generator below to roll a personality trait and background for your character and record them on your
-        character sheet. Your background is meant to be a loose, but important starting point to help inform your
-        character's history and perspective as you roleplay and explore within Vaarn. it will color how non-player
-        characters might react to you, as well as you to them. It is up to you how and to what extent to interpret the
-        results and significance of this roll, but smart roleplay involves drawing on your background to gain the upper
-        hand in applicable situations, and playing to your weaknesses can also enhance your experience.</p>
-    <iframe src="https://null.perchance.org/vov-char-traits"></iframe>
-    <h2>4. Choose your Ancestry and Give your Character a Name</h2>
-    <p>Choose an Ancestry from the table below. Your ancestry defines what type of life-form you are and what <a
-            href="https://vaarn.github.io/#/tongues-of-vaarn?id=tongues-of-vaarn" target="_blank">languages</a> you
-        know. The table has a link for each Ancestry where rolling tables may be found and used to inspire your
-        character’s name and appearance. Some of these tables have sparks for demeanour and the like, but the background
-        generator we used in the last step makes them redundant. Only use them if you want your character to be more
-        complex. Finally, each Ancestry also has one or two “Special” features. Be sure to add them to your Features
-        list!</p>
+
     <table>
         <tbody>
             <tr>
                 <th>Ancestry</th>
-                <th>Languages known</th>
+                <th>Languages Known</th>
                 <th>Special</th>
             </tr>
+
             <tr>
                 <td><a href="https://vaarn.github.io/#/ancestries?id=true-kin" target="_blank">True-Kin</a> (human)</td>
                 <td>Vaarnish, Hegemonic Standard</td>
-                <td><b>Pure of Blood</b> - You gain Advantage on reaction rolls when you encounter other true-kin. You
-                    lose this bonus if you ever become visibly mutated. <br><b>Inheritor</b> - You have advantage on
-                    checks to identify and use pre-collapse technology.</td>
+                <td>
+                    <b>Pure of Blood</b> – Advantage on reaction rolls with other true-kin (lost if visibly
+                    mutated).<br>
+                    <b>Inheritor</b> – Advantage on checks to identify and use pre-collapse technology.
+                </td>
             </tr>
+
             <tr>
                 <td><a href="https://vaarn.github.io/#/ancestries?id=cacogen" target="_blank">Cacogen</a> (mutant)</td>
                 <td>Vaarnish</td>
-                <td><b>Corrupted Blood</b> - You must roll for 1-3 <a
+                <td>
+                    <b>Corrupted Blood</b> – Roll 1–3 <a
                         href="https://vaarn.github.io/#/ancestries?id=mutations">mutations</a> during character
-                    creation.</td>
+                    creation.
+                </td>
             </tr>
+
             <tr>
                 <td><a href="https://vaarn.github.io/#/ancestries?id=synth" target="_blank">Synth</a> (robot or android)
                 </td>
-                <td>Vaarnish, LogLang syntax</td>
-                <td><b>Synthetic Flesh</b> - You do not need to eat or breathe and are immune to biological hazards, but
-                    you suffer double damage from electrical attacks. <br><b>Synthetic Mind</b> - You are vulnerable to
-                    hacking and malicious LogLang code.</td>
+                <td>Vaarnish, LogLang Syntax</td>
+                <td>
+                    <b>Synthetic Flesh</b> – No need to eat or breathe; immune to biological hazards; take double damage
+                    from electricity.<br>
+                    <b>Synthetic Mind</b> – Vulnerable to hacking and malicious LogLang code.
+                </td>
             </tr>
+
             <tr>
                 <td><a href="https://vaarn.github.io/#/ancestries?id=newbeast" target="_blank">Newbeast</a> (sapient
                     animal)</td>
                 <td>Vaarnish</td>
-                <td><b>Beasthood</b> - You gain advantage on checks wherever it would make sense for your animal nature
-                    to provide it, and disadvantage in circumstances where your animal nature would be unhelpful.</td>
+                <td>
+                    <b>Beasthood</b> – Advantage or disadvantage where your animal nature meaningfully helps or hinders.
+                </td>
             </tr>
+
             <tr>
                 <td><a href="https://vaarn.github.io/#/ancestries?id=mycomorph" target="_blank">Mycomorph</a>
                     (corpse-fungus hybrid)</td>
                 <td>Vaarnish</td>
-                <td><b>Twice Born</b> - You are formed from fungus and the corpse of a human. You can attempt to recall
-                    information that your original body knew. This may include information that has otherwise been lost
-                    during the Great Collapse. <br><b>Detritivor</b> - You can consume organic matter in any state of
-                    decay and gain nourishment from it. Your healing from Short Rests is doubled if the meal you eat is
-                    rotting.</td>
+                <td>
+                    <b>Twice Born</b> – Attempt to recall knowledge from your original body.<br>
+                    <b>Detritivore</b> – Consume rotting organic matter; double healing from Short Rests if your meal is
+                    decayed.
+                </td>
             </tr>
         </tbody>
     </table>
-    <h2>6. Choose a Mystic Gift or Cybernetic Implant</h2>
-    <p>Pick 1 <a href="1.5 Mystic Gifts.html" target="_blank">Mystic Gift</a> or 1 <a href="1.4 Cybernetics.html"
-            target="_blank">Cybernetic Implant</a> to add to your Features list.</p>
+
+    <hr>
+
+    <h2>3. Roll Your Abilities</h2>
+
+    <p>You have six core Abilities:</p>
     <ul>
-        <li>If you chose a Cybernetic Implant, be sure to update any relevant Ability values, and keep in mind that you
-            may only ever have 1 Cybernetic implant installed per Ability. Each Ability has a ballot box next to it that
-            you can shade in to designate an installed implant.</li>
+        <li><b>Strength (STR)</b> – Melee attacks, physical power, readied items</li>
+        <li><b>Dexterity (DEX)</b> – Ranged attacks, speed, finesse</li>
+        <li><b>Constitution (CON)</b> – Health recovery, endurance, carrying capacity</li>
+        <li><b>Psyche (PSY)</b> – Perception, intuition, ammo conservation</li>
+        <li><b>Intellect (INT)</b> – Knowledge, searching, languages, technology</li>
+        <li><b>Ego (EGO)</b> – Morale, persuasion, charm, deception</li>
     </ul>
-    <h2>6. Add items to your Burdens</h2>
-    <p>You will notice that your character sheet has some Burden Slots numbered 1 - 20. Follow these instructions to add items to your burdens:</p>
+
+    <div class="callout warning">
+        <b>Important:</b> For each Ability, roll <b>3d6</b> and record the <b>lowest</b> die as the Ability’s value.
+    </div>
+
+    <p>
+        Example: You roll 2, 2, and 6 for Strength. The lowest die is 2, so your STR is 2.
+    </p>
+
+    <hr>
+
+    <h2>4. Roll Background & Personality</h2>
+
     <ol>
-        <li>Add 5 Rations of water to your Burdens (5 rations can stack in a single Burden Slot).</li>
-        <li>If you chose a Mystic Gift in step 6, that gift occupies 1 Burden Slot.</li>
-        <li>Roll on each of the <a href="1.3 Starting Gear.html">Starting Gear Tables</a> and add your starting gear to
-            your Burdens. Weapons and armor will specify the amount of burden slots they occupy, while ammunition and
-            other gear can "stack" multiples of itself in a single slot.</li>
-        <li>Finally, roll on the <a href="https://vaarn.github.io/#/exotica" target="_blank">Exotica</a> table for a
-            piece of Exotica. This occupies 1 burden slot.</li>
+        <li>Use the generator below to roll a personality and background combo. If the result feels silly or unfun, just
+            re-roll it!</li>
+        <li>Record this info on your character sheet.</li>
     </ol>
-    <h2>7. Finishing Touches</h2>
-    <p>Fill in these final details on your character sheet:</p>
+
+    <iframe src="https://null.perchance.org/vov-char-traits"></iframe>
+
+    <h3>What does this effect?</h3>
+    <p>
+        Your background informs how NPCs react to you, what skills and knowledge you plausibly possess,
+        and how you roleplay your character in Vaarn.
+    </p>
+
+    <hr>
+
+    <h2>5. Choose a Mystic Gift or Cybernetic Implant</h2>
+
+    <p>
+        Choose <b>one</b> of the following and add it to your Features list:
+    </p>
     <ul>
-        <li><b>Level and XP:</b> You are level 1, have 0 current XP and will require 10 XP to advance to level 2.
-        </li>
-        <li><b>Hit Points (HP):</b> To get your current and maximum Hit Points, roll 1d8. you may re-roll once, but must
-            stick with the new result if you do so.</li>
-        <li><b>Maximum Burden Slots:</b> Equal to your CON + 10.
-            <ul>
-                <li>You can indicate your maximum Burden Slots on your character sheet by putting an "X" next to the
-                    bottom-most slots. For example, if you have a CON of 1, you have 11 Maximum Burden Slots, and you
-                    will put X's next to slots 12 - 20 to signify that they can't be used.</li>
-                <li>If the items added to your burdens in step 7 exceed your maximum burden slots, you must choose items
-                    to get rid of until nothing occupies an "X'd" slot.</li>
-            </ul>
-        </li>
-        <li><b>Readied Items:</b> You can "Ready" a number of Burden Slots' worth of items up to your STR + 2. 
-            <ul>
-                <li>You can indicate Readied slots by putting an "R" next to them. Readied items can be used reactively or in combat without using an action to retrieve them first.</li>
-                <li>Worn Items such as armor and clothing do not need to be readied to be used at will, and neither do Mystic Gifts. You can indicate a worn Burden Slot with a "W".</li>
-            </ul>
-        </li>
+        <li><a href="1.5 Mystic Gifts.html" target="_blank">Mystic Gift</a></li>
+        <li><a href="1.4 Cybernetics.html" target="_blank">Cybernetic Implant</a></li>
     </ul>
-    <h2>8. You're ready to play!</h2>
-    <p>Send the referee a copy of your character sheet, or just tell him your Name, Ancestry, Personality, Background,
-        Mystic Gift/Implant, and Armor Value, then use the Discord server to organize or join your first session.</p>
+
+    <p>You may only ever have <b>one Cybernetic Implant installed per Ability</b>.</p>
+
+    <hr>
+
+    <h2>6. Hit Points & Carrying Capacity</h2>
+
+    <ul>
+        <li><b>Hit Points:</b> Roll 1d8. You may reroll once, but must keep the second result.</li>
+        <li><b>Maximum Burden Slots:</b> CON + 10</li>
+    </ul>
+
+    <p>
+        Mark unusable Burden Slots with an <b>X</b> on your sheet.
+    </p>
+
+    <hr>
+
+    <h2>7. Starting Gear & Burdens</h2>
+
+    <ol>
+        <li>Add <b>5 rations of water</b> (they stack in one Burden Slot).</li>
+        <li>If you chose a Mystic Gift, it occupies <b>1 Burden Slot</b>.</li>
+        <li>Roll once on each of the <a href="1.3 Starting Gear.html" target="_blank">Starting Gear Tables</a>.</li>
+        <li>Roll once on the <a href="https://vaarn.github.io/#/exotica" target="_blank">Exotica</a> table.</li>
+    </ol>
+
+    <pre>
+Burden Slot States:
+[ ] Carried – requires an action to retrieve
+[R] Readied – usable instantly (Up to STR + 2 slots)
+[W] Worn – armor, clothing, Mystic Gifts
+[X] Unusable – exceeds your max burden
+</pre>
+
+    <p>
+        If any items exceed your maximum Burden Slots, discard items until all X’d slots are empty.
+    </p>
+
+    <hr>
+
+    <h2>8. Final Details</h2>
+
+    <ul>
+        <li><b>Level:</b> 1</li>
+        <li><b>XP:</b> 0 (10 XP to reach level 2)</li>
+        <li><b>Readied Items:</b> STR + 2 Burden Slots</li>
+    </ul>
+
+    <hr>
+
+    <h2>9. You’re Ready to Play</h2>
+
+    <p>
+        Send your referee either a copy of your character sheet or the following details:
+    </p>
+
+    <ul>
+        <li>Name</li>
+        <li>Ancestry</li>
+        <li>Background & Personality</li>
+        <li>Mystic Gift or Cybernetic</li>
+        <li>HP and Armor Value</li>
+    </ul>
+
     <footer>
         <p><a href="index.html">Back to Index</a></p>
     </footer>
